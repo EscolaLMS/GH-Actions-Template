@@ -43,8 +43,9 @@ TODO
 
 ## API Laravel packages
 
-- `main` branch as main branch :) 
+- `main` branch as main branch :) do not use `develop` branch 
 - `feature/X` as feature branch `X` is number of issue in Gh Issues of repository
+- after MVP, use `release/X` branch 
 - phpunit tests run by github actions (definitions in this repository) 
 - phpunit code coverage pushed to https://codecov.io/gh
 - swagger documention push to github pages 
