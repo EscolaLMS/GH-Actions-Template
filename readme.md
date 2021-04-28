@@ -41,6 +41,12 @@ TODO
 
 TODO
 
-## API
+## API Laravel packages
 
-TODO
+- `main` brach as main branch :) 
+- phpunit tests run by github actions (definitions in this repository) 
+- phpunit code coverage pushed to https://codecov.io/gh
+- swagger documention push to github pages 
+- repository registered to packagist in `escolalms/*` namespace with versioning in tag releases 
+- badges: codecov, pipeline status, packagist downloads, packagist latest version, licence 
+- all packages should be attached to [main API](https://github.com/EscolaLMS/API) repository as composer dependency
