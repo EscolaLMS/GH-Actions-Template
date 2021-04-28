@@ -43,7 +43,8 @@ TODO
 
 ## API Laravel packages
 
-- `main` brach as main branch :) 
+- `main` branch as main branch :) 
+- `feature/X` as feature branch `X` is number of issue in Gh Issues of repository
 - phpunit tests run by github actions (definitions in this repository) 
 - phpunit code coverage pushed to https://codecov.io/gh
 - swagger documention push to github pages 
