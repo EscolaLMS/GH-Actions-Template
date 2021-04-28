@@ -52,3 +52,4 @@ TODO
 - repository registered to packagist in `escolalms/*` namespace with versioning in tag releases 
 - badges: codecov, pipeline status, packagist downloads, packagist latest version, licence 
 - all packages should be attached to [main API](https://github.com/EscolaLMS/API) repository as composer dependency
+- codeclimate for Static analys
