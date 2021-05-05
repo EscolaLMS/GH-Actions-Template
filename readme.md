@@ -65,3 +65,7 @@ TODO
 [![downloads](https://img.shields.io/packagist/v/escolalms/auth)](https://packagist.org/packages/escolalms/auth)
 [![downloads](https://img.shields.io/packagist/l/escolalms/auth)](https://packagist.org/packages/escolalms/auth)
 ```
+
+### Authorisation (with Testing) 
+
+TODO 
