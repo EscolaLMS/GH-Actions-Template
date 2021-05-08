@@ -54,6 +54,16 @@ TODO
 - all packages should be attached to [main API](https://github.com/EscolaLMS/API) repository as composer dependency
 - codeclimate for Static analys
 
+Classes (and files) that should be inside the package 
+
+- service provider 
+- policy with auth provider 
+- seeder for permissions for [default roles](https://github.com/EscolaLMS/Core/blob/main/src/Enums/UserRole.php) 
+- seeder for default content 
+- tests 
+- swagger annotations 
+- readme.md with implementation details 
+
 
 ### Badges example 
 
