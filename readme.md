@@ -14,9 +14,8 @@ Each Escola LMS package should contain
 Each Escola LMS Laravel PHP Package should contain
 
 1. PhpUnit tests for L8, mysql, postgres, php7.4 & php8.0. Test are launched with [testbench](https://github.com/orchestral/testbench)
-2. PhpUnit with code covarage uploaded to codecov
-3. Behat tests (for L8, php7.4 and postgres)
-4. Swagger documentation as github pages.
+2. PhpUnit with code covarage uploaded to codecov and codeclimate
+3. Swagger documentation as github pages.
 
 All this are in [php](php) folder. To enable above just copy files to your package and change settings.
 
@@ -77,5 +76,9 @@ Classes (and files) that should be inside the package
 ```
 
 ### Authorisation (with Testing) 
+
+TODO 
+
+### Permissions naming pattern
 
 TODO 
