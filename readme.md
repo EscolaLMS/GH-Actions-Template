@@ -79,6 +79,183 @@ Classes (and files) that should be inside the package
 
 TODO 
 
-### Permissions naming pattern
+## Permissions naming pattern
 
-TODO 
+Basic pattern:
+```
+[package-name?]_[model-name]_[action-name]_[modifier-name?]
+```
+
+Sections are merged with `_`
+
+Multi-part names are merged with `-`
+
+
+---
+
+
+### PackageName 
+
+`package-name` is the name of the repository to which the permission applies. 
+
+example:
+for `EscolaLMS/Cart` -> `cart`
+
+
+#### When we omit the `package-name`:
+
+##### 1. When the package name is named the same as the model 
+
+e.g. `EscolaLMS/Categories`.
+
+According to the basic pattern it would look like this: 
+
+```
+categories_category_create // wrong
+```
+
+This does not make sense, so we omit the package name and create 
+
+```
+category_create // good
+```
+
+
+##### 2. To not bind the permission too much to the repository
+This gives a gateway to split the repository.
+
+e.g. 
+User management is currently in the `EscolaLMS/Auth` package.
+According to the basic pattern, the permission to create a user would look like this: 
+
+```
+auth_user_create // wrong
+``` 
+
+In this case, it is worth omitting `auth` and eventually doing 
+
+```
+user_create // good
+```
+
+---
+
+
+### ModelName
+
+`model-name` the name of the model/element that the action applies to. Always specify the model in the singular:
+
+```
+user-groups_create // wrong
+user-groups_list // wrong
+```
+
+```
+user-group_create // good
+user-group_list // good
+```
+
+---
+
+### ActionName
+
+`action-name` is the name of the action we want to allow.
+
+
+#### Standard action names:
+
+`create` - create model (do not use `add` in this case)
+
+`read` - read a model (do not use `attend`, `display`, `show` in this case)
+
+`update` - edit the model (do not use `edit` in this case)
+
+`delete` - deleting a model (do not use `remove` in this case)
+
+`list` - read the list of the given model
+
+`manage` - when a general model management permission is needed that combines `create`, `read`, `update` and `delete`
+
+
+#### Actions on a model in a model:
+
+In some cases we need permission to create relationships between models. 
+
+We need to determine which model is the master model, and we put the sub-model into an action. Sub-model in the action is given as the first one, the proper action as the second one., e.g:
+
+```
+user-group_member-add // good
+```
+
+```
+user-group_add-member // wrong
+```
+
+---
+
+
+### ModifierName
+
+`modifier-name` is a modifier for the action. It is used when the action is used in a non-standard way.
+
+Example:
+`user_update` vs `user_update_self`
+Both permissions allow you to edit a user, but in the second case you can only edit your own user (not any user).
+
+
+#### Model in modifier:
+
+Sometimes we need a permission for an action that depends on another model. 
+
+Example: 
+We are the author of the course. We need a list of users who have joined it. We don't have permission to view all users (standard `user_list` is out).
+
+You can do it like this for example:
+```
+user_list_course-owned
+```
+The subModel in the modifier is given first, the proper modifier second.
+
+**If you need more than one modifier in a given permission, you should consider whether the permission you are creating should be split.**
+
+#### Avoid modifiers whenever possible:
+```
+user_list_any // wrong
+user_list // good
+```
+
+#### Standard modifiers:
+
+`self` - for user-related actions (e.g. `user_update_self`, `user-group_update_self`)
+
+
+---
+
+### Permissions for views in admin panel:
+
+**PackageName** - must be `dashboard-app`
+
+**ModelName** - this is the name of the section or whole subpage
+
+**ActionName** - usually it will be simply `access`
+
+Example:
+```
+dashboad-app_course-list_access
+```
+
+---
+
+
+### Permissions for views in the client (front) application:
+
+**PackageName** - must be `client-app`
+
+**ModelName** - is the name of the section or the whole subpage
+
+**ActionName** - usually it will be simply `access`
+
+Example:
+```
+client-app_course-list_access
+```
