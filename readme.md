@@ -32,6 +32,125 @@ To generate swagger for repository please instead of `@OA\Info` add `SWAGGER_VER
         run: php -r "file_put_contents('src/HeadlessH5PServiceProvider.php', str_replace('SWAGGER_VERSION', '@OA\Info(title=\"EscolaLMS\", version=\"0.0.1\")', file_get_contents('src/HeadlessH5PServiceProvider.php')));"
 ```
 
+### How to use this as package. 
+
+Repeat those steps for each package
+
+1. Clone your package to a folder inside this repo, in `packages` folder (`git clone XXX package`). Add your folder to `.gitignore`
+
+2. Amend Host Laravel `composer.json`
+
+Before:
+
+```json
+"repositories": {
+}
+```
+
+After:
+
+```json
+"repositories": {
+    "escolalms/headless-h5p": {
+        "type": "path",
+        "url": "../packages/headless-h5p"
+    }
+}
+```
+
+Example with 2 packages
+
+```json
+"repositories": {
+    "escolalms/headless-h5p": {
+        "type": "path",
+        "url": "../packages/headless-h5p"
+    },
+    "escolalms/courses": {
+        "type": "path",
+        "url": "../packages/courses"
+    }
+}
+```
+
+Working with packages `versions` 
+
+```json
+"repositories": [{
+    "type": "path",
+    "name": "escolalms/courses",
+    "url": "packages/courses",
+    "options": {
+        "versions": {
+            "escolalms/courses": "0.2.20"
+        }
+    }
+}]
+```
+
+Note that name (`escolalms/headless-h5p` in example above) **MUST** match one you have in `package/composer.json`
+
+2.1. (Optional)
+In case you'll be generating your own swagger documentation you might want to alter `host/config/l5-swagger.php` as follows:
+
+Before:
+```
+'annotations' => [
+               base_path('vendor/escolalms/headless-h5p/src'),
+               //base_path('app')
+],
+```
+After:
+```
+'annotations' => [
+               base_path('vendor/escolalms/mypackage/src'),
+               //base_path('app')
+],
+```
+Above example is assuming that your package name is `mypackage`.
+
+
+3. Enter bash (instruction above), then add you packge with `composer require escolalms/headless-h5p`
+
+That's it - now you have laravel working with docker that is using package from other folder that is `git` maintained.
+
+## Xdebug remote debbuging
+
+_Note_ instruction below is for VSCODE, yet it should work with minor changes in other IDEs like PHPStorm.
+
+1. Add mapping to `.vscode/launch.json`
+
+Before:
+
+```json
+    "configurations": [
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "pathMappings": {
+                "/var/www/html": "${workspaceFolder}/host",
+            }
+        },
+```
+
+After:
+
+```json
+    "configurations": [
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "pathMappings": {
+                "/var/www/html": "${workspaceFolder}/host",
+                "/var/www/package": "${workspaceFolder}/package"
+            }
+        },
+```
+
 ## React components package
 
 TODO
