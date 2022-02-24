@@ -2,12 +2,13 @@
 
 Each Escola LMS package should contain
 
-1. Licence Apache-2.0
+1. Licence MIT
 2. Definitions of Tests as Github Actions
-3. Readme file
-4. Codeclimate
-5. GitGuardian
-6. Badges 
+3. codecov Tests CodeCoverage
+4. Readme file
+5. Codeclimate (quality & cc) 
+6. GitGuardian
+7. Badges 
 
 ## Laravel PHP Package
 
