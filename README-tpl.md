@@ -21,6 +21,12 @@
 
 (composer require, migrate, permission seeder, anything else)
 
+
+## Database
+
+- tables
+- relations
+
 ## Example or Tutorial 
 
 
