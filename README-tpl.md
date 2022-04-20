@@ -22,7 +22,7 @@
 (composer require, migrate, permission seeder, anything else)
 
 
-## Database
+## Database (optional)
 
 - tables
 - relations
@@ -34,6 +34,10 @@
 
 - Description of endpoint if needed 
 - link go swagger 
+
+## Config 
+
+- what values config has and what does they do 
 
 ## Tests
 
